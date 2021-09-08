@@ -1,0 +1,126 @@
+// Submitted By: Gabriel Christian M. Ibañez
+
+// Create a class for the different flavors of the pizza
+class Normal_Pizza{
+  crust(){
+    print("Crust: True");
+  }
+  sauce(){
+    print("Sauce: True");
+  }
+  cheese(){
+    print("Cheese: True");
+  }
+  getPizza(){ //1.) Abstraction
+    crust();
+    sauce();
+    cheese();
+  }
+  
+}
+
+
+//2.) Inheritance
+class hawaiian_Pizza extends Normal_Pizza{
+  void Pineapple(){
+    print("Pinapple: True");
+  }
+}
+
+
+//3.) Polymorphism
+class Meat_Pizza extends Normal_Pizza{
+  @override
+  void sauce(){
+    print("Hot Sauce: True");
+  }
+  void Meat(){
+    print("Meat: True");
+  }
+}
+
+
+//Costumer's information
+class Costumer{
+  String CostumerName;
+  int ReservationNumber;
+  String Voucher;
+  String _TenPercentDiscount_AvailableVoucher = "XUPUQ4YU"; //4.) Encapsulation
+  String _FiftyPercentDiscount_AvailableVoucher = "S2NCE9G7"; //Encapsulation
+  
+  //Checking for reservation
+  CheckReservation(){
+    if (ReservationNumber == 001){
+      print("Hello "+ CostumerName+ "! Please proceed to table 1");
+    }
+    else if(ReservationNumber == 002){
+      print("Hello "+ CostumerName+ "! Please proceed to table 2");
+    }
+    else if(ReservationNumber == 003){
+      print("Hello "+ CostumerName+ "! Please proceed to table 3");
+    }
+    else{
+      print("Hi "+ CostumerName + "! Sorry you have not reserved any table");
+    }
+  }
+  
+  //check for discout vouchers
+  CheckVoucher(){
+    if (Voucher == _TenPercentDiscount_AvailableVoucher){
+      print('Congratulations! You have been granted a 10% discount!');
+    }
+    else if(Voucher == _FiftyPercentDiscount_AvailableVoucher){
+      print('Congratulations! You have been granted a 50% discount!');
+    }
+    else{
+      print("Sorry, Your voucher code is not valid");
+    }
+  }
+  
+  
+  Costumer({required this.CostumerName,required this.ReservationNumber, required this.Voucher}); // constructor
+}
+
+
+//Main Code
+void main(){
+  
+  //1st Costumer
+  Costumer Costumer1 = new Costumer(CostumerName: "Jonathan", ReservationNumber: 001, Voucher:"XUPUQ4YU" );
+  Costumer1.CheckReservation();
+  Costumer1.CheckVoucher();
+  hawaiian_Pizza Costumer1_Order = hawaiian_Pizza();
+  print('Pizza Type: Hawaiian Pizza');
+  Costumer1_Order.getPizza();
+  Costumer1_Order.Pineapple();
+  
+  print('\n-------------------------\n');
+  
+  //2nd Costumer
+  Costumer Costumer2 = new Costumer(CostumerName: "Arthur", ReservationNumber: 002, Voucher:"S2NCE9G7" );
+  Costumer2.CheckReservation();
+  Costumer2.CheckVoucher();
+  Meat_Pizza Costumer2_Order =  Meat_Pizza();
+  print('Pizza Type: Meat Pizza');
+  Costumer2_Order.getPizza();
+  Costumer2_Order.Meat();
+  
+  print('\n-------------------------\n');
+  
+  //3rd Costumer
+  Costumer Costumer3 = new Costumer(CostumerName: "Casper", ReservationNumber: 003, Voucher:"NYUHBLTB" );
+  Costumer3.CheckReservation();
+  Costumer3.CheckVoucher();
+  Normal_Pizza Costumer3_Order =  Normal_Pizza();
+  print('Pizza Type: Normal Pizza');
+  Costumer3_Order.getPizza();
+
+  
+  print('\n-------------------------\n');
+  
+  //Last Costumer
+  Costumer Costumer4 = new Costumer(CostumerName: "Jack", ReservationNumber: 004, Voucher:"None");
+  Costumer4.CheckReservation();
+  
+}
+
