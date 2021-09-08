@@ -1,7 +1,7 @@
 // Submitted By: Gabriel Christian M. Ibañez
 
 // Create a class for the different flavors of the pizza
-class Normal_Pizza{
+class NormalPizza{
   crust(){
     print("Crust: True");
   }
@@ -21,20 +21,20 @@ class Normal_Pizza{
 
 
 //2.) Inheritance
-class hawaiian_Pizza extends Normal_Pizza{
-  void Pineapple(){
+class HawaiianPizza extends NormalPizza{
+  void pineapple(){
     print("Pinapple: True");
   }
 }
 
 
 //3.) Polymorphism
-class Meat_Pizza extends Normal_Pizza{
+class MeatPizza extends NormalPizza{
   @override
   void sauce(){
     print("Hot Sauce: True");
   }
-  void Meat(){
+  void meat(){
     print("Meat: True");
   }
 }
@@ -42,34 +42,34 @@ class Meat_Pizza extends Normal_Pizza{
 
 //Costumer's information
 class Costumer{
-  String CostumerName;
-  int ReservationNumber;
-  String Voucher;
-  String _TenPercentDiscount_AvailableVoucher = "XUPUQ4YU"; //4.) Encapsulation
-  String _FiftyPercentDiscount_AvailableVoucher = "S2NCE9G7"; //Encapsulation
+  String costumerName;
+  int reservationNumber;
+  String voucher;
+  String _tenPercentDiscountAvailableVoucher = "XUPUQ4YU"; //4.) Encapsulation
+  String _fiftyPercentDiscountAvailableVoucher = "S2NCE9G7"; //Encapsulation
   
   //Checking for reservation
-  CheckReservation(){
-    if (ReservationNumber == 001){
-      print("Hello "+ CostumerName+ "! Please proceed to table 1");
+  checkReservation(){
+    if (reservationNumber == 001){
+      print("Hello "+ costumerName+ "! Please proceed to table 1");
     }
-    else if(ReservationNumber == 002){
-      print("Hello "+ CostumerName+ "! Please proceed to table 2");
+    else if(reservationNumber == 002){
+      print("Hello "+ costumerName+ "! Please proceed to table 2");
     }
-    else if(ReservationNumber == 003){
-      print("Hello "+ CostumerName+ "! Please proceed to table 3");
+    else if(reservationNumber == 003){
+      print("Hello "+ costumerName+ "! Please proceed to table 3");
     }
     else{
-      print("Hi "+ CostumerName + "! Sorry you have not reserved any table");
+      print("Hi "+ costumerName + "! Sorry you have not reserved any table");
     }
   }
   
   //check for discout vouchers
-  CheckVoucher(){
-    if (Voucher == _TenPercentDiscount_AvailableVoucher){
+  checkVoucher(){
+    if (voucher == _tenPercentDiscountAvailableVoucher){
       print('Congratulations! You have been granted a 10% discount!');
     }
-    else if(Voucher == _FiftyPercentDiscount_AvailableVoucher){
+    else if(voucher == _fiftyPercentDiscountAvailableVoucher){
       print('Congratulations! You have been granted a 50% discount!');
     }
     else{
@@ -78,7 +78,7 @@ class Costumer{
   }
   
   
-  Costumer({required this.CostumerName,required this.ReservationNumber, required this.Voucher}); // constructor
+  Costumer({required this.costumerName,required this.reservationNumber, required this.voucher}); // constructor
 }
 
 
@@ -86,41 +86,41 @@ class Costumer{
 void main(){
   
   //1st Costumer
-  Costumer Costumer1 = new Costumer(CostumerName: "Jonathan", ReservationNumber: 001, Voucher:"XUPUQ4YU" );
-  Costumer1.CheckReservation();
-  Costumer1.CheckVoucher();
-  hawaiian_Pizza Costumer1_Order = hawaiian_Pizza();
+  Costumer costumer1 = new Costumer(costumerName: "Jonathan", reservationNumber: 001, voucher:"XUPUQ4YU" );
+  costumer1.checkReservation();
+  costumer1.checkVoucher();
+  HawaiianPizza costumer1_Order = HawaiianPizza();
   print('Pizza Type: Hawaiian Pizza');
-  Costumer1_Order.getPizza();
-  Costumer1_Order.Pineapple();
+  costumer1_Order.getPizza();
+  costumer1_Order.pineapple();
   
   print('\n-------------------------\n');
   
   //2nd Costumer
-  Costumer Costumer2 = new Costumer(CostumerName: "Arthur", ReservationNumber: 002, Voucher:"S2NCE9G7" );
-  Costumer2.CheckReservation();
-  Costumer2.CheckVoucher();
-  Meat_Pizza Costumer2_Order =  Meat_Pizza();
+  Costumer costumer2 = new Costumer(costumerName: "Arthur", reservationNumber: 002, voucher:"S2NCE9G7" );
+  costumer2.checkReservation();
+  costumer2.checkVoucher();
+  MeatPizza costumer2_Order =  MeatPizza();
   print('Pizza Type: Meat Pizza');
-  Costumer2_Order.getPizza();
-  Costumer2_Order.Meat();
+  costumer2_Order.getPizza();
+  costumer2_Order.meat();
   
   print('\n-------------------------\n');
   
   //3rd Costumer
-  Costumer Costumer3 = new Costumer(CostumerName: "Casper", ReservationNumber: 003, Voucher:"NYUHBLTB" );
-  Costumer3.CheckReservation();
-  Costumer3.CheckVoucher();
-  Normal_Pizza Costumer3_Order =  Normal_Pizza();
+  Costumer costumer3 = new Costumer(costumerName: "Casper", reservationNumber: 003, voucher:"NYUHBLTB" );
+  costumer3.checkReservation();
+  costumer3.checkVoucher();
+  NormalPizza costumer3_Order =  NormalPizza();
   print('Pizza Type: Normal Pizza');
-  Costumer3_Order.getPizza();
+  costumer3_Order.getPizza();
 
   
   print('\n-------------------------\n');
   
   //Last Costumer
-  Costumer Costumer4 = new Costumer(CostumerName: "Jack", ReservationNumber: 004, Voucher:"None");
-  Costumer4.CheckReservation();
+  Costumer costumer4 = new Costumer(costumerName: "Jack", reservationNumber: 004, voucher:"None");
+  costumer4.checkReservation();
   
 }
 
